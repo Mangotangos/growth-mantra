@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mangotangos.github.io/growth-mantra/sitemap.xml
