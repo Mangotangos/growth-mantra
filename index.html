@@ -30,6 +30,19 @@
 <meta name="theme-color" content="#0a0a0f">
 <meta name="format-detection" content="telephone=no">
 
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
+
+<!-- Analytics: replace G-XXXXXXXXXX with reachpundit GA4 measurement ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%238b5cf6'/%3E%3Cstop offset='100%25' stop-color='%23ec4899'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='22' fill='url(%23g)'/%3E%3Ctext x='50' y='68' font-family='system-ui,sans-serif' font-size='58' font-weight='800' fill='white' text-anchor='middle'%3EG%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,7 +60,7 @@
       "url": "https://reachpundit.com/",
       "logo": "https://reachpundit.com/logo.png",
       "description": "Websites, mobile apps, and social media marketing for small business owners.",
-      "email": "tiktokdaily2020@gmail.com",
+      "email": "hello@reachpundit.com",
       "sameAs": []
     },
     {
@@ -59,13 +72,21 @@
       "inLanguage": "en-US"
     },
     {
-      "@type": "ProfessionalService",
+      "@type": ["ProfessionalService", "LocalBusiness"],
       "@id": "https://reachpundit.com/#service",
       "name": "ReachPundit",
       "image": "https://reachpundit.com/og-image.png",
       "description": "Small business digital agency offering websites, mobile apps, and social media marketing. Fixed-price packages shipped in weeks.",
       "priceRange": "$297 - $5000+",
-      "areaServed": "United States",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "KS",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        { "@type": "Country", "name": "United States" },
+        { "@type": "State", "name": "Kansas" }
+      ],
       "serviceType": ["Web Development", "Mobile App Development", "Social Media Marketing"]
     },
     {
@@ -603,7 +624,22 @@
     font-weight: 700;
     margin-bottom: 8px;
   }
-  .project p { color: var(--text-muted); font-size: 0.9rem; }
+  .project p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 14px; }
+  .project-proof { list-style: none; padding: 0; margin: 0 0 16px; display: flex; flex-direction: column; gap: 6px; }
+  .project-proof li {
+    color: var(--text-muted); font-size: 0.82rem; padding-left: 18px; position: relative; line-height: 1.5;
+  }
+  .project-proof li::before {
+    content: ""; position: absolute; left: 0; top: 8px; width: 8px; height: 8px;
+    border-radius: 50%; background: var(--grad-warm); opacity: 0.85;
+  }
+  .project-link {
+    display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono);
+    font-size: 0.78rem; font-weight: 500; color: var(--text); text-decoration: none;
+    padding: 6px 12px; border: 1px solid var(--border-strong); border-radius: 999px;
+    transition: all 0.2s var(--ease-out);
+  }
+  .project-link:hover { background: var(--surface-hover); border-color: var(--accent-2); transform: translateY(-1px); }
 
   /* Process */
   .process-section { padding: 120px 0; background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -685,6 +721,35 @@
     margin-bottom: 16px;
   }
   .cta-box p { color: var(--text-muted); margin-bottom: 36px; font-size: 1.05rem; }
+
+  /* Contact form */
+  .contact-form { display: flex; flex-direction: column; gap: 16px; text-align: left; max-width: 640px; margin: 0 auto; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field span {
+    font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500;
+    color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .form-field input, .form-field select, .form-field textarea {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+    color: var(--text); font-family: var(--font-body); font-size: 0.95rem;
+    padding: 12px 14px; transition: border-color 0.2s var(--ease-out), background 0.2s var(--ease-out);
+    width: 100%;
+  }
+  .form-field input::placeholder, .form-field textarea::placeholder { color: var(--text-dim); }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+    outline: none; border-color: var(--accent-2); background: var(--surface);
+  }
+  .form-field select { appearance: none; cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%23a1a1aa' stroke-width='2' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
+  }
+  .form-field textarea { resize: vertical; min-height: 80px; font-family: var(--font-body); }
+  .form-submit { margin-top: 8px; align-self: flex-start; }
+  .form-fineprint { font-size: 0.82rem; color: var(--text-dim); margin: 8px 0 0; text-align: center; }
+  .form-fineprint a { color: var(--text-muted); text-decoration: underline; text-underline-offset: 2px; }
+  .form-fineprint a:hover { color: var(--accent-2); }
 
   /* Footer */
   footer { padding: 56px 0 40px; border-top: 1px solid var(--border); }
@@ -948,15 +1013,15 @@
 
     <div class="stats">
       <div class="stat">
-        <span class="stat-num" data-count="12">0</span>
+        <span class="stat-num" data-count="12">12</span>
         <div class="stat-label">Live products shipped</div>
       </div>
       <div class="stat">
-        <span class="stat-num" data-count="100">0</span><span class="stat-num" style="font-size: 0.6em;">%</span>
+        <span class="stat-num" data-count="100">100</span><span class="stat-num" style="font-size: 0.6em;">%</span>
         <div class="stat-label">Fixed-price projects</div>
       </div>
       <div class="stat">
-        <span class="stat-num" data-count="14">0</span>
+        <span class="stat-num" data-count="14">14</span>
         <div class="stat-label">Day avg. launch</div>
       </div>
       <div class="stat">
@@ -1098,31 +1163,58 @@
         <span class="project-tag">Web + CRM</span>
         <h4>Subscription CRM Platform</h4>
         <p>Marketing site, WordPress CMS, Stripe checkout, and custom CRM serving membership organizations on a monthly subscription.</p>
+        <ul class="project-proof">
+          <li>121 CRM screens, multi-tenant architecture</li>
+          <li>Stripe live, GA4 + Sentry monitoring</li>
+        </ul>
+        <a href="https://churchautomate.com" target="_blank" rel="noopener" class="project-link">View live <span aria-hidden="true">↗</span></a>
       </div>
       <div class="project reveal delay-1">
         <span class="project-tag">Web + App + Backend</span>
         <h4>Nonprofit Services Network</h4>
         <p>Platform connecting underserved communities with housing, food, and legal help. Landing site, mobile app, and admin dashboard.</p>
+        <ul class="project-proof">
+          <li>Web + Expo mobile + FastAPI backend</li>
+          <li>Bilingual ES/EN, 501(c)(3) nonprofit</li>
+        </ul>
+        <a href="https://migrantportal.com" target="_blank" rel="noopener" class="project-link">View live <span aria-hidden="true">↗</span></a>
       </div>
       <div class="project reveal delay-2">
         <span class="project-tag">SaaS App</span>
         <h4>Farm Management SaaS</h4>
         <p>Mobile-first management tool for small farms. Seven tabs, CSV exports, and Stripe subscription billing.</p>
+        <ul class="project-proof">
+          <li>Web + mobile parity, 5 CSV export types</li>
+          <li>Stripe subscriptions, Sentry error tracking</li>
+        </ul>
+        <a href="https://barnledger.net" target="_blank" rel="noopener" class="project-link">View live <span aria-hidden="true">↗</span></a>
       </div>
       <div class="project reveal">
         <span class="project-tag">Mobile App</span>
         <h4>Wellness Mobile App</h4>
         <p>Cross-platform Expo app shipped to Google Play. Clean UX, offline-first, password reset via transactional email.</p>
+        <ul class="project-proof">
+          <li>Published on Google Play, 166/166 tests passing</li>
+          <li>Resend transactional email, secure auth</li>
+        </ul>
       </div>
       <div class="project reveal delay-1">
         <span class="project-tag">Web + Booking</span>
         <h4>Service Marketplace</h4>
         <p>Cleaner-marketplace platform with booking, scheduler, and half-up-front payout logic. Multi-role frontend.</p>
+        <ul class="project-proof">
+          <li>3 user roles: customer, provider, admin</li>
+          <li>50% deposit + payout split via Stripe</li>
+        </ul>
       </div>
       <div class="project reveal delay-2">
         <span class="project-tag">Social</span>
         <h4>Content Automation Engine</h4>
         <p>Zapier-driven pipeline posting 10 plus pins per day. Hands-off social content engine for retail and lifestyle brands.</p>
+        <ul class="project-proof">
+          <li>10+ Pinterest pins/day, fully automated</li>
+          <li>Canva MCP + Zapier multi-account routing</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1182,12 +1274,65 @@
 <section id="contact" class="cta-section" aria-label="Contact ReachPundit">
   <div class="container">
     <div class="cta-box reveal">
-      <h2>Ready to grow<br>your business online?</h2>
-      <p>Book a free 15-minute call. If we are not the right fit, we will point you to someone better.</p>
-      <a href="mailto:tiktokdaily2020@gmail.com?subject=Project%20Inquiry" class="btn btn-primary">
-        <span>Email ReachPundit</span>
-        <span class="btn-arrow">→</span>
-      </a>
+      <h2>Tell us about<br>your business.</h2>
+      <p>Free 15-minute reply within one business day. If we are not the right fit, we will point you to someone better.</p>
+
+      <form action="https://formsubmit.co/hello@reachpundit.com" method="POST" class="contact-form" autocomplete="on">
+        <input type="hidden" name="_subject" value="New ReachPundit project inquiry">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://reachpundit.com/?sent=1">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+        <div class="form-row">
+          <label class="form-field">
+            <span>Your name</span>
+            <input type="text" name="name" required placeholder="Jane Smith">
+          </label>
+          <label class="form-field">
+            <span>Email</span>
+            <input type="email" name="email" required placeholder="jane@yourbusiness.com">
+          </label>
+        </div>
+        <div class="form-row">
+          <label class="form-field">
+            <span>Business type</span>
+            <input type="text" name="business_type" placeholder="Plumber, restaurant, nonprofit...">
+          </label>
+          <label class="form-field">
+            <span>What you need</span>
+            <select name="project_type" required>
+              <option value="">Pick one</option>
+              <option>Website</option>
+              <option>Mobile app</option>
+              <option>Social marketing</option>
+              <option>Website + social</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+        </div>
+        <label class="form-field">
+          <span>Budget range</span>
+          <select name="budget" required>
+            <option value="">Pick one</option>
+            <option>Under $500</option>
+            <option>$500 to $1,500</option>
+            <option>$1,500 to $5,000</option>
+            <option>$5,000+</option>
+            <option>Recurring monthly only</option>
+          </select>
+        </label>
+        <label class="form-field">
+          <span>Anything else?</span>
+          <textarea name="message" rows="3" placeholder="Tell us about your goals, your current site, your competitors..."></textarea>
+        </label>
+
+        <button type="submit" class="btn btn-primary form-submit">
+          <span>Send inquiry</span>
+          <span class="btn-arrow">→</span>
+        </button>
+        <p class="form-fineprint">Or email <a href="mailto:hello@reachpundit.com?subject=Project%20Inquiry">hello@reachpundit.com</a> directly.</p>
+      </form>
     </div>
   </div>
 </section>
@@ -1204,7 +1349,7 @@
         <a href="#services">Services</a>
         <a href="#work">Work</a>
         <a href="#contact">Contact</a>
-        <a href="mailto:tiktokdaily2020@gmail.com">Email</a>
+        <a href="mailto:hello@reachpundit.com">Email</a>
       </div>
     </div>
     <div class="footer-copy">&copy; 2026 ReachPundit. Websites, apps, and social marketing for small business.</div>
