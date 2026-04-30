@@ -240,32 +240,17 @@
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; }
   .logo {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.35rem;
-    letter-spacing: -0.03em;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .logo-mark {
-    width: 32px; height: 32px;
+    display: flex; align-items: center;
+    background: #fff;
     border-radius: 8px;
-    background: var(--grad-primary);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.85rem; font-weight: 800; color: #fff;
-    position: relative;
-    overflow: hidden;
+    padding: 4px 10px;
   }
-  .logo-mark::before {
-    content: '';
-    position: absolute;
-    inset: -50%;
-    background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.4), transparent);
-    animation: spin 4s linear infinite;
+  .logo-img {
+    height: 34px;
+    width: auto;
+    display: block;
   }
-  .logo-mark span { position: relative; z-index: 1; }
   @keyframes spin { to { transform: rotate(360deg); } }
-
-  .logo-text span { background: var(--grad-primary); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 
   .nav-links { display: flex; gap: 36px; font-size: 0.92rem; color: var(--text-muted); }
   .nav-links a { position: relative; padding: 6px 0; transition: color 0.2s; }
@@ -970,8 +955,7 @@
 <nav id="nav" aria-label="Main navigation">
   <div class="container nav-inner">
     <a href="#" class="logo" aria-label="ReachPundit home">
-      <span class="logo-mark"><span>R</span></span>
-      <span class="logo-text">Reach<span>Pundit</span></span>
+      <img src="/logo.png" alt="ReachPundit" class="logo-img">
     </a>
     <div class="nav-links">
       <a href="#services">Services</a>
